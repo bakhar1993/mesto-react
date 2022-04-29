@@ -11,13 +11,13 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState({name: '', link: ''});
 
     function closeAllPopups() {
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
         setIsAddPlacePopupOpen(false);
-        setSelectedCard(false)
+        setSelectedCard({name: '', link: ''})
     }
 
     function handleCardClick(data) {
@@ -37,7 +37,7 @@ function App() {
     }
 
     return (
-        <div className="page">
+        <div>
             <Header />
             <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
             <Footer />
@@ -47,7 +47,6 @@ function App() {
                     <span className="name-input-error popup__input-error"></span>
                     <input id="job-input" type="text" name="about" className="popup__input popup__input_type-job" required />
                     <span className="job-input-error popup__input-error"></span></>} </PopupWithForm>
-            ~
 
             <PopupWithForm isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} title={'Новое место'}>
                 {<> <input id="place-input" type="text" name="name" className="popup__input popup__input_type-place" placeholder="Название" required />
